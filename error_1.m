@@ -1,5 +1,5 @@
 function [ error ] = error_1( N,k,x )
-%UNTITLED6 Summary of this function goes here
+%Calculating the different errors. 
 % Findeds the error give 
 % N =  number of spaces bewteen 0 and 1 
 % k = is the multiplyer on f.m 
@@ -17,9 +17,13 @@ error=zeros(6,N);
             for j=0:1:N
                 error(n,:)=error(n,:)+abs( (k*cos(k*x)) - (DIF(x,h,k,n ) ) );
             end  
+                 error(n,:)=(1/(1+N))*error(n,:);
         elseif n==6 % the last one is the second deravitive. 
-            error(n,:)=error(n,:)+abs( (k*cos(k*x)) - (DIF(x,h,k,n ) ) );
-        error(n,:)=(1/(1+N))*error(n,:);
+            for j=0:1:N
+                error(n,:)=error(n,:)+abs( (k*cos(k*x)) - (DIF(x,h,k,n ) ) );
+            end
+                 error(n,:)=(1/(1+N))*error(n,:);
+          
         end
     end 
     
